@@ -95,7 +95,7 @@ frontend/
 
 ## 📝 Licencia
 
-Este proyecto está bajo la Licencia **MIT**. Siéntete libre de usarlo, modificarlo y aprender de él.
+Este proyecto está bajo la Licencia **MIT**. Siéntete libre de usarlo, modificarlo y aprender de él, pero no te olvides de darme creditos.
 
 ---
 
