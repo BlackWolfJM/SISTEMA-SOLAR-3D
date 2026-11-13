@@ -34,6 +34,7 @@ const QUESTIONS = [
 ];
 const INITIAL_OPTIONS = {
   showLabels: true, showOrbits: true, showAsteroids: true, showMoons: true,
+  showSelectionWireframe: false,
   showGrid: false, follow: true, background: 'texture', quality: 'high'
 };
 const DATA_ROWS = [
@@ -175,6 +176,7 @@ function Settings({ options, setOptions, reset }) {
   const toggle=(key)=>setOptions(prev=>({...prev,[key]:!prev[key]}));
   const switches=[
     ['showLabels','Etiquetas de los planetas'],
+    ['showSelectionWireframe','Mostrar malla de selección'],
     ['showOrbits','Trayectorias orbitales'],
     ['showAsteroids','Cinturón de asteroides'],
     ['showMoons','Satélites naturales'],

@@ -108,7 +108,7 @@ function OrbitLine({ distance }) {
   </mesh>;
 }
 
-function Planet({ id, info, speed, quality, selected, onSelect, positions, showLabels, showOrbits, showMoons }) {
+function Planet({ id, info, speed, quality, selected, onSelect, positions, showLabels, showOrbits, showMoons, showSelectionWireframe }) {
   const orbital = useRef();
   const body = useRef();
   const map = useLoader(THREE.TextureLoader, planetTexture(id));
@@ -142,7 +142,7 @@ function Planet({ id, info, speed, quality, selected, onSelect, positions, showL
         {showMoons && info.moons?.map(moon => <Suspense key={moon.name} fallback={null}>
           <Moon moon={moon} speed={speed} quality={quality} />
         </Suspense>)}
-        {selected && <mesh scale={1.18}>
+        {selected && showSelectionWireframe && <mesh scale={1.18}>
           <sphereGeometry args={[info.radius, 22, 14]} />
           <meshBasicMaterial color="#7bdaf4" wireframe transparent opacity={0.18} depthWrite={false} />
         </mesh>}
@@ -222,7 +222,8 @@ function Scene({ selected, speed, focus, homeSignal, options, onSelect, onCamera
     {PLANET_KEYS.map(id => <Suspense key={id} fallback={null}>
       <Planet id={id} info={planetData[id]} speed={speed} quality={options.quality}
         selected={selected === id} onSelect={onSelect} positions={positions}
-        showLabels={options.showLabels} showOrbits={options.showOrbits} showMoons={options.showMoons} />
+        showLabels={options.showLabels} showOrbits={options.showOrbits} showMoons={options.showMoons}
+        showSelectionWireframe={options.showSelectionWireframe} />
     </Suspense>)}
     <CameraRig positions={positions} focus={focus} homeSignal={homeSignal} follow={options.follow}
       quality={options.quality} onCameraReady={onCameraReady} />
